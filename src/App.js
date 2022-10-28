@@ -1,65 +1,108 @@
 import './App.css';
-import TrelloTasks from "./components/trelloTask";
+
 import {useEffect, useState} from "react";
 import {tasksList} from './data/index'
 
+import AddNewTrelloTask from "./components/addNewTrelloTask";
+
 function App() {
-    const [task, setTask] = useState([]);
+   const [data, setData] = useState([]);
 
-    useEffect(() => {
-        setTask(tasksList)
-    }, [])
+   useEffect(() => {
+      setData(tasksList)
+   }, [])
 
-    const changeDescription = (id, newCategory) => {
-        setTask(task.map(text=> {
-            if(id===text.id){
-                text.description=  newCategory || text.description
-            }
-            return text;
-        }))
-    }
+   const changeDescription = (id, newCategory) => {
+      setData(data.map(text => {
+         if (id === text.id) {
+            text.description = newCategory || text.description
+         }
+         return text;
+      }))
+   }
 
-const handleChangeTitle = (id, newTitle) => {
-   setTask(task.map(title => {
-      if(id === title.id) {
-         title.title = newTitle
-      }
-      return title
-   }))
+   const changeCategory = (id, newCategory) => {
+      setData(data.map(elem => {
+         if (elem.id === id) {
+            elem.category = newCategory
+         }
+         return elem
+      }))
+   }
 
-}
+   const handleChangeTitle = (id, newTitle) => {
+      setData(data.map(title => {
+         if (id === title.id) {
+            title.title = newTitle || title.title
+         }
+         return title
+      }))
+
+   }
+
+   const handleChangeStatus = (id, newStatus) => {
+      setData(data.map(elem => {
+         if (elem.id === id) {
+            elem.status = newStatus
+         }
+         return elem
+      }))
+   }
 
 
-    return (
-        <div className="App">
-            <TrelloTasks
-               handleChangeTitle={handleChangeTitle}
-               changeDescription={changeDescription}
-                name={"Todo"}
-                filter={task.filter(elem => elem.status === "todo")}
-            />
-            <TrelloTasks
-               handleChangeTitle={handleChangeTitle}
-               changeDescription={changeDescription}
-                name={"Done"}
-                filter={task.filter(elem => elem.status === "done")}
-            />
+   const handleAddNewTrello = ( title, category, status, description) => {
+      setData(data => [...data, {
+         id: Math.random(),
+         title,
+         category,
+         status,
+         description,
+      }])
+   }
 
-            <TrelloTasks
-               handleChangeTitle={handleChangeTitle}
-               changeDescription={changeDescription}
-                name={"Blocked"}
-                filter={task.filter(elem => elem.status === "blocked")}
-            />
+   return (
+      <div className="App">
+         <AddNewTrelloTask
+            handleAddNewTrello={handleAddNewTrello}
+            handleChangeTitle={handleChangeTitle}
+            changeDescription={changeDescription}
+            changeCategory={changeCategory}
+            handleChangeStatus={handleChangeStatus}
+            name={"Todo"}
+            dataFilter={data.filter(elem => elem.status === "todo")}
+         />
+         <AddNewTrelloTask
+            // handleAddNewTrello={handleAddNewTrello}
+            handleChangeTitle={handleChangeTitle}
+            changeDescription={changeDescription}
+            changeCategory={changeCategory}
+            handleChangeStatus={handleChangeStatus}
+            name={"Done"}
+            dataFilter={data.filter(elem => elem.status === "done")}
+         />
 
-            <TrelloTasks
-               handleChangeTitle={handleChangeTitle}
-               changeDescription={changeDescription}
-                name={"InProgress"}
-                filter={task.filter(elem=> elem.status === "inProgress")}
-            />
-        </div>
-    );
+         <AddNewTrelloTask
+            handleAddNewTrello={handleAddNewTrello}
+            handleChangeTitle={handleChangeTitle}
+            changeDescription={changeDescription}
+            changeCategory={changeCategory}
+            handleChangeStatus={handleChangeStatus}
+            name={"Blocked"}
+            dataFilter={data.filter(elem => elem.status === "blocked")}
+         />
+
+         <AddNewTrelloTask
+            handleAddNewTrello={handleAddNewTrello}
+            handleChangeTitle={handleChangeTitle}
+            changeDescription={changeDescription}
+            changeCategory={changeCategory}
+            handleChangeStatus={handleChangeStatus}
+            name={"InProgress"}
+            dataFilter={data.filter(elem => elem.status === "inProgress")}
+         />
+
+      </div>
+   );
 }
 
 export default App;
