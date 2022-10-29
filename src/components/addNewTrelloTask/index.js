@@ -70,10 +70,8 @@ const AddNewTrelloTask = ({
                   <img  className={"icon_Add"} src={AddIcon} alt=""/>
                   <span>Add a card...</span>
                </div>
-
-               // <button onClick={handleClickAdd}>Add</button>
                :
-               <div className={"editMod-box"} onClick={handleClickAdd}>
+               <div className={"editMod_box"} onClick={handleClickAdd}>
                <div className={"addBlock"}>
 
                   <form>
