@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import TrelloTasks from "../trelloTasks";
+import AddIcon from "./../../assets/add.svg"
 
 
 const AddNewTrelloTask = ({
@@ -39,10 +40,19 @@ const AddNewTrelloTask = ({
       setNewCategory(e.target.value)
    }
 
+   const handleAddTrello = () => {
+      handleAddNewTrello(newTitle, newCategory,newDescription, name )
+      setNewTitle("")
+      setNewDescription("")
+      setIsAdd(!isAdd)
+   }
+
    return (
       <div className={"container"}>
-         <div>
+         <div className={"trello_block"}>
+            <div className={"trello_block_name"}>
             <h2>{name}</h2>
+            </div>
             {dataFilter.map(elem => <
                   TrelloTasks
                   key={elem.id}
@@ -54,9 +64,14 @@ const AddNewTrelloTask = ({
                />
             )} {
             isAdd ?
-               <button onClick={handleClickAdd}>Add</button>
+               <div className={"block_AddIcon"} onClick={handleClickAdd}>
+                  <img  className={"icon_Add"} src={AddIcon} alt=""/>
+                  <span>Add a card</span>
+               </div>
+
+               // <button onClick={handleClickAdd}>Add</button>
                :
-               <div>
+               <div className={"addBlock"}>
 
                   <form>
                      <label htmlFor="title">title</label>
@@ -67,7 +82,11 @@ const AddNewTrelloTask = ({
                         onChange={handleTitleValue}
                      />
                   </form>
-                  <br/>
+
+                  <form >
+                     <p>Status {name}</p>
+                  </form>
+
                   <form>
                      <label htmlFor="text">Text</label>
                      <input
@@ -95,7 +114,7 @@ const AddNewTrelloTask = ({
                      </select>
                   </form>
 
-                  <button>Done</button>
+                  <button onClick={handleAddTrello}>Done</button>
                   <button onClick={handleClickAdd}>cancel</button>
                </div>
          }

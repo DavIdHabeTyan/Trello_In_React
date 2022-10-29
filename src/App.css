@@ -1,20 +1,38 @@
-.container {
-    display: flex;
-    border: 1px solid red;
-    flex-direction: column;
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
 
-.task_block {
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid black;
+.App_todo{
+    background-color: #e8e7e7;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
 }
 
-.App {
-    display: flex;
+.App_header{
+    color: #fff;
+    padding-left: 20px;
 }
+
 
 .select_Window {
+    border-radius: 8px;
+    background-color: darkgray;
+    width: 250px;
+    height: 200px;
+    position: fixed;
+}
+
+.category{
+    font-weight: bold;
+}
+
+.addBlock{
     border-radius: 8px;
     padding: 15px 0 0 15px ;
     background-color: darkgray;
@@ -23,6 +41,55 @@
     position: absolute;
 }
 
-.category{
+.iconEdit {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.icon_Add {
+
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    padding-right: 5px;
+}
+
+.iconEdit:hover{
+    width: 26px;
+    height: 26px;
+}
+
+.block_AddIcon{
+    cursor: pointer;
+    display: flex;
+}
+.block_AddIcon:hover{
     font-weight: bold;
+    color: #03036a;
+}
+
+.test{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+.test > div {
+    background-color: #e8e7e7;
+    border-radius: 8px;
+    width: 300px;
+    height: 100%
+}
+
+.trello_block_name{
+    color: #0093E9;
+    text-align: center;
+}
+
+.task_block{
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
 }

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+import Edit from "./../../assets/edite.svg"
 
 const TrelloTasks = (props) => {
    const {status, description, title, changeDescription, handleChangeTitle, changeCategory, handleChangeStatus, id, category} = props;
@@ -51,7 +52,9 @@ const TrelloTasks = (props) => {
             <p className={"category"}>{category}</p>
          </div>
          {isClickedEdit ? <div>
-               <button onClick={handleEdit}>Edit</button>
+
+               {/*<button onClick={handleEdit}>Edit</button>*/}
+               <img  onClick={handleEdit} src={Edit}  className={"iconEdit"} alt=""/>
             </div>
             :
             <div className={"select_Window"}>

@@ -50,57 +50,68 @@ function App() {
    }
 
 
-   const handleAddNewTrello = ( title, category, status, description) => {
-      setData(data => [...data, {
+   const handleAddNewTrello = (title, category, description, status,) => {
+      setData([...data, {
          id: Math.random(),
          title,
          category,
-         status,
          description,
+         status,
       }])
    }
 
+   console.log(data, ":::data::")
+
    return (
       <div className="App">
-         <AddNewTrelloTask
-            handleAddNewTrello={handleAddNewTrello}
-            handleChangeTitle={handleChangeTitle}
-            changeDescription={changeDescription}
-            changeCategory={changeCategory}
-            handleChangeStatus={handleChangeStatus}
-            name={"Todo"}
-            dataFilter={data.filter(elem => elem.status === "todo")}
-         />
-         <AddNewTrelloTask
-            // handleAddNewTrello={handleAddNewTrello}
-            handleChangeTitle={handleChangeTitle}
-            changeDescription={changeDescription}
-            changeCategory={changeCategory}
-            handleChangeStatus={handleChangeStatus}
-            name={"Done"}
-            dataFilter={data.filter(elem => elem.status === "done")}
-         />
+         <div className={"App_header"}>
+            <h1>Trello Board</h1>
+         </div>
 
-         <AddNewTrelloTask
-            handleAddNewTrello={handleAddNewTrello}
-            handleChangeTitle={handleChangeTitle}
-            changeDescription={changeDescription}
-            changeCategory={changeCategory}
-            handleChangeStatus={handleChangeStatus}
-            name={"Blocked"}
-            dataFilter={data.filter(elem => elem.status === "blocked")}
-         />
+         <div className={"App_trello"}>
+            <div className={"test"}>
+               <div className={"App_todo"}>
+                  <AddNewTrelloTask
+                     handleAddNewTrello={handleAddNewTrello}
+                     handleChangeTitle={handleChangeTitle}
+                     changeDescription={changeDescription}
+                     changeCategory={changeCategory}
+                     handleChangeStatus={handleChangeStatus}
+                     name={"todo"}
+                     dataFilter={data.filter(elem => elem.status === "todo")}
+                  />
+               </div>
+               <AddNewTrelloTask
 
-         <AddNewTrelloTask
-            handleAddNewTrello={handleAddNewTrello}
-            handleChangeTitle={handleChangeTitle}
-            changeDescription={changeDescription}
-            changeCategory={changeCategory}
-            handleChangeStatus={handleChangeStatus}
-            name={"InProgress"}
-            dataFilter={data.filter(elem => elem.status === "inProgress")}
-         />
+                  handleChangeTitle={handleChangeTitle}
+                  changeDescription={changeDescription}
+                  changeCategory={changeCategory}
+                  handleChangeStatus={handleChangeStatus}
+                  name={"done"}
+                  dataFilter={data.filter(elem => elem.status === "done")}
+               />
 
+               <AddNewTrelloTask
+                  handleAddNewTrello={handleAddNewTrello}
+                  handleChangeTitle={handleChangeTitle}
+                  changeDescription={changeDescription}
+                  changeCategory={changeCategory}
+                  handleChangeStatus={handleChangeStatus}
+                  name={"blocked"}
+                  dataFilter={data.filter(elem => elem.status === "blocked")}
+               />
+
+               <AddNewTrelloTask
+                  handleAddNewTrello={handleAddNewTrello}
+                  handleChangeTitle={handleChangeTitle}
+                  changeDescription={changeDescription}
+                  changeCategory={changeCategory}
+                  handleChangeStatus={handleChangeStatus}
+                  name={"inProgress"}
+                  dataFilter={data.filter(elem => elem.status === "inProgress")}
+               />
+            </div>
+         </div>
       </div>
    );
 }
