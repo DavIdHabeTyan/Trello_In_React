@@ -14,15 +14,18 @@ html{
     justify-content: space-around;
 }
 
-.App_header{
+.App_header h1{
+    text-align: center;
     color: #fff;
     padding-left: 20px;
 }
 
 
 .select_Window {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5px;
     border-radius: 8px;
-    background-color: darkgray;
+    background-color: #37bbe3;
     width: 250px;
     height: 200px;
     position: fixed;
@@ -33,15 +36,18 @@ html{
 }
 
 .addBlock{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5px;
     border-radius: 8px;
-    padding: 15px 0 0 15px ;
-    background-color: darkgray;
+    background-color: #37bbe3;
     width: 250px;
     height: 200px;
-    position: absolute;
+    position: fixed;
 }
 
 .iconEdit {
+    padding: 5px;
+    margin-left: 10px;
     cursor: pointer;
     width: 25px;
     height: 25px;
@@ -77,6 +83,7 @@ html{
 }
 
 .test > div {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: #e8e7e7;
     border-radius: 8px;
     width: 300px;
@@ -88,7 +95,9 @@ html{
     text-align: center;
 }
 
-.task_block{
+.task_block_child{
+    padding: 5px;
+    border-radius: 5px;
     background-color: white;
     margin-left: 10px;
     margin-right: 10px;

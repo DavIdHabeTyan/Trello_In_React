@@ -7,7 +7,6 @@ import AddNewTrelloTask from "./components/addNewTrelloTask";
 
 function App() {
    const [data, setData] = useState([]);
-
    useEffect(() => {
       setData(tasksList)
    }, [])
@@ -37,7 +36,6 @@ function App() {
          }
          return title
       }))
-
    }
 
    const handleChangeStatus = (id, newStatus) => {
@@ -49,7 +47,6 @@ function App() {
       }))
    }
 
-
    const handleAddNewTrello = (title, category, description, status,) => {
       setData([...data, {
          id: Math.random(),
@@ -60,14 +57,11 @@ function App() {
       }])
    }
 
-   console.log(data, ":::data::")
-
    return (
       <div className="App">
          <div className={"App_header"}>
             <h1>Trello Board</h1>
          </div>
-
          <div className={"App_trello"}>
             <div className={"test"}>
                <div className={"App_todo"}>
@@ -82,7 +76,6 @@ function App() {
                   />
                </div>
                <AddNewTrelloTask
-
                   handleChangeTitle={handleChangeTitle}
                   changeDescription={changeDescription}
                   changeCategory={changeCategory}
@@ -115,5 +108,4 @@ function App() {
       </div>
    );
 }
-
 export default App;

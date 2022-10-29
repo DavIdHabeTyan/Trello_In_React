@@ -4,17 +4,14 @@ import Edit from "./../../assets/edite.svg"
 
 const TrelloTasks = (props) => {
    const {status, description, title, changeDescription, handleChangeTitle, changeCategory, handleChangeStatus, id, category} = props;
-
    const [isClickedEdit, setIsClickedEdit] = useState(true)
    const [editDescription, setEditeDescription] = useState(description)
    const [editTitle, setEditTitle] = useState(title)
    const [editCategory, setEditCategory] = useState(category)
    const [changeStatus, setChangeStatus] = useState(status)
 
-
    function handleEdit() {
       setIsClickedEdit(!isClickedEdit)
-
    }
 
    const handelCancel = () => {
@@ -46,7 +43,7 @@ const TrelloTasks = (props) => {
 
    return (
       <div className={"task_block"}>
-         <div className={"task_block"}>
+         <div className={"task_block_child"}>
             <p>{title}</p>
             <p>{description}</p>
             <p className={"category"}>{category}</p>
