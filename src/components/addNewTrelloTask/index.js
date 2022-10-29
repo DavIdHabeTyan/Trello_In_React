@@ -10,14 +10,15 @@ const AddNewTrelloTask = ({
                              changeDescription,
                              handleChangeTitle,
                              handleChangeStatus,
-                             changeCategory
+                             changeCategory,
+                             handleDeleteTrello
                           }) => {
 
    const [isAdd, setIsAdd] = useState(true)
 
    const [newTitle, setNewTitle] = useState("");
 
-   const [newCategory, setNewCategory] = useState("")
+   const [newCategory, setNewCategory] = useState("JS")
 
    const [newStatus, setNewStatus] = useState("");
 
@@ -60,17 +61,19 @@ const AddNewTrelloTask = ({
                   handleChangeTitle={handleChangeTitle}
                   changeCategory={changeCategory}
                   handleChangeStatus={handleChangeStatus}
+                  handleDeleteTrello={handleDeleteTrello}
                   {...elem}
                />
             )} {
             isAdd ?
                <div className={"block_AddIcon"} onClick={handleClickAdd}>
                   <img  className={"icon_Add"} src={AddIcon} alt=""/>
-                  <span>Add a card</span>
+                  <span>Add a card...</span>
                </div>
 
                // <button onClick={handleClickAdd}>Add</button>
                :
+               <div className={"editMod-box"} onClick={handleClickAdd}>
                <div className={"addBlock"}>
 
                   <form>
@@ -114,8 +117,9 @@ const AddNewTrelloTask = ({
                      </select>
                   </form>
 
-                  <button onClick={handleAddTrello}>Done</button>
-                  <button onClick={handleClickAdd}>cancel</button>
+                  <button className={"windowButton windowButton1"} onClick={handleAddTrello}>Done</button>
+                  <button className={"windowButton"} onClick={handleClickAdd}>cancel</button>
+               </div>
                </div>
          }
 

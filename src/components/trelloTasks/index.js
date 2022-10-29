@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 
 import Edit from "./../../assets/edite.svg"
 
+import iconDelete from "./../../assets/delet.svg"
 const TrelloTasks = (props) => {
-   const {status, description, title, changeDescription, handleChangeTitle, changeCategory, handleChangeStatus, id, category} = props;
+   const {status, description, title, changeDescription, handleChangeTitle, changeCategory, handleChangeStatus, id, category, handleDeleteTrello} = props;
    const [isClickedEdit, setIsClickedEdit] = useState(true)
    const [editDescription, setEditeDescription] = useState(description)
    const [editTitle, setEditTitle] = useState(title)
@@ -52,6 +53,8 @@ const TrelloTasks = (props) => {
 
                {/*<button onClick={handleEdit}>Edit</button>*/}
                <img  onClick={handleEdit} src={Edit}  className={"iconEdit"} alt=""/>
+               <img src={iconDelete}  onClick={() => handleDeleteTrello(id)} className={"iconEdit"}  alt=""/>
+
             </div>
             :
             <div className={"select_Window"}>
@@ -108,8 +111,8 @@ const TrelloTasks = (props) => {
                      <option value="PHORMULA">PHORMULA</option>
                   </select>
                </form>
-               <button onClick={handelDone}>Done</button>
-               <button onClick={handelCancel}>cancel</button>
+               <button className={"windowButton"} onClick={handelDone}>Done</button>
+               <button className={"windowButton"}  onClick={handelCancel}>Cancel</button>
 
             </div>
          }

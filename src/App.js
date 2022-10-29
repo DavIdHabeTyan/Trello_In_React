@@ -2,8 +2,8 @@ import './App.css';
 
 import {useEffect, useState} from "react";
 import {tasksList} from './data/index'
-
 import AddNewTrelloTask from "./components/addNewTrelloTask";
+
 
 function App() {
    const [data, setData] = useState([]);
@@ -57,6 +57,10 @@ function App() {
       }])
    }
 
+   const handleDeleteTrello = (id) => {
+      setData(prev=> prev.filter(elem => elem.id !== id))
+   }
+
    return (
       <div className="App">
          <div className={"App_header"}>
@@ -71,15 +75,18 @@ function App() {
                      changeDescription={changeDescription}
                      changeCategory={changeCategory}
                      handleChangeStatus={handleChangeStatus}
+                     handleDeleteTrello={handleDeleteTrello}
                      name={"todo"}
                      dataFilter={data.filter(elem => elem.status === "todo")}
                   />
                </div>
                <AddNewTrelloTask
+                  handleAddNewTrello={handleAddNewTrello}
                   handleChangeTitle={handleChangeTitle}
                   changeDescription={changeDescription}
                   changeCategory={changeCategory}
                   handleChangeStatus={handleChangeStatus}
+                  handleDeleteTrello={handleDeleteTrello}
                   name={"done"}
                   dataFilter={data.filter(elem => elem.status === "done")}
                />
@@ -90,6 +97,7 @@ function App() {
                   changeDescription={changeDescription}
                   changeCategory={changeCategory}
                   handleChangeStatus={handleChangeStatus}
+                  handleDeleteTrello={handleDeleteTrello}
                   name={"blocked"}
                   dataFilter={data.filter(elem => elem.status === "blocked")}
                />
@@ -100,6 +108,7 @@ function App() {
                   changeDescription={changeDescription}
                   changeCategory={changeCategory}
                   handleChangeStatus={handleChangeStatus}
+                  handleDeleteTrello={handleDeleteTrello}
                   name={"inProgress"}
                   dataFilter={data.filter(elem => elem.status === "inProgress")}
                />

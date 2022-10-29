@@ -3,6 +3,7 @@
     padding: 0;
 }
 html{
+    min-height: 950px;
     background-color: #0093E9;
     background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
@@ -20,17 +21,6 @@ html{
     padding-left: 20px;
 }
 
-
-.select_Window {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 5px;
-    border-radius: 8px;
-    background-color: #37bbe3;
-    width: 250px;
-    height: 200px;
-    position: fixed;
-}
-
 .category{
     font-weight: bold;
 }
@@ -42,8 +32,46 @@ html{
     background-color: #37bbe3;
     width: 250px;
     height: 200px;
-    position: fixed;
+    /*position: center;*/
 }
+
+.select_Window {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #37bbe3;
+    width: 250px;
+    height: 200px;
+
+}
+
+
+.windowButton{
+    /*margin-top: 10px;*/
+    /*width: 120px;*/
+    /*padding: 3px;*/
+    /*border: none;*/
+    /*border-radius: 9999em;*/
+    /*background-color: white;*/
+
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 11px 28px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: none;
+    color: #2c3e50;
+    background: #fcfcfc;
+    transition: all 0.25s ease;
+}
+
+.windowButton:hover{
+    box-shadow: none;
+    transform: none;
+    background: whitesmoke;
+}
+
 
 .iconEdit {
     padding: 5px;
@@ -62,23 +90,42 @@ html{
 }
 
 .iconEdit:hover{
-    width: 26px;
-    height: 26px;
+    transform: translateY(-5px);
+
 }
 
-.block_AddIcon{
+.block_AddIcon {
+
+    /*margin: 5px auto;*/
+    /*padding: 3px;*/
+    /*width: 130px;*/
+    /*background-color: white;*/
+    /*cursor: pointer;*/
+    /*display: flex;*/
+    /*border-radius: 5px;*/
+
+    margin-top: 10px;
     cursor: pointer;
-    display: flex;
+    font-weight: 500;
+    padding: 11px 28px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: none;
+    color: #2c3e50;
+    background: #fcfcfc;
+    transition: all 0.25s ease;
 }
 .block_AddIcon:hover{
-    font-weight: bold;
-    color: #03036a;
+    box-shadow: none;
+    transform: none;
+    background: whitesmoke;
 }
 
 .test{
+    gap: 10px;
     display: flex;
     flex-wrap: wrap;
-    flex-flow: row;
+   padding-top: 20px;
     justify-content: space-around;
 }
 
@@ -101,4 +148,27 @@ html{
     background-color: white;
     margin-left: 10px;
     margin-right: 10px;
+    min-width: 255.5px;
+}
+
+input {
+    font-family: inherit;
+    line-height: inherit;
+    font-size: 1em;
+    background: linear-gradient(21deg, #10abff, #1beabd);
+    padding: 3px;
+    display: inline-block;
+    border-radius: 9999em;
+}
+
+.editMod-box{
+    width: 100vw;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(31, 25, 25, 0.356);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
