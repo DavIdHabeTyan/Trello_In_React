@@ -9,15 +9,10 @@ const AddNewTrelloTask = ({name, dataFilter,}) => {
    const value = useContext(Context)
    const {handleAddNewTrello} = value
 
-
    const [isAdd, setIsAdd] = useState(true)
-
    const [newTitle, setNewTitle] = useState("");
-
    const [newCategory, setNewCategory] = useState("JS")
-
    const [newDescription, setNewDescription] = useState("")
-
 
    const handleClickAdd = () => {
       setIsAdd(!isAdd)
