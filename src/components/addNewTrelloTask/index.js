@@ -48,6 +48,7 @@ const AddNewTrelloTask = ({
       setIsAdd(!isAdd)
    }
 
+
    return (
       <div className={"container"}>
          <div className={"trello_block"}>
@@ -64,17 +65,16 @@ const AddNewTrelloTask = ({
                   handleDeleteTrello={handleDeleteTrello}
                   {...elem}
                />
-            )} {
-            isAdd ?
+            )} { isAdd ?
                <div className={"block_AddIcon"} onClick={handleClickAdd}>
                   <img  className={"icon_Add"} src={AddIcon} alt=""/>
                   <span>Add a card...</span>
                </div>
                :
-               <div className={"editMod_box"} onClick={handleClickAdd}>
+               <div className={"editMod_box"} >
                <div className={"addBlock"}>
 
-                  <form>
+                  <form className={"input"}>
                      <label htmlFor="title">title</label>
                      <input
                         id={"title"}
@@ -114,9 +114,10 @@ const AddNewTrelloTask = ({
                         <option>PHORMULA</option>
                      </select>
                   </form>
-
-                  <button className={"windowButton windowButton1"} onClick={handleAddTrello}>Done</button>
+               <div className="button">
+                  <button className={"windowButton "} onClick={handleAddTrello}>Done</button>
                   <button className={"windowButton"} onClick={handleClickAdd}>cancel</button>
+               </div>
                </div>
                </div>
          }

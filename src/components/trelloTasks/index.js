@@ -61,9 +61,9 @@ const TrelloTasks = (props) => {
             <p>{description}</p>
             <p className={"category"}>{category}</p>
          </div>
-         {isClickedEdit ? <div>
+         {isClickedEdit ?
+            <div>
 
-               {/*<button onClick={handleEdit}>Edit</button>*/}
                <img onClick={handleEdit} src={Edit} className={"iconEdit"} alt=""/>
                <img src={iconDelete} onClick={() => handleDeleteTrello(id)} className={"iconEdit"} alt=""/>
 
@@ -124,10 +124,10 @@ const TrelloTasks = (props) => {
                         <option value="PHORMULA">PHORMULA</option>
                      </select>
                   </form>
-                  <button className={"windowButton"} onClick={handelDone}>Done</button>
-                  <button className={"windowButton"} onClick={handelCancel}>Cancel</button>
-
-
+                  <div className="button">
+                     <button className={"windowButton"} onClick={handelDone}>Done</button>
+                     <button className={"windowButton"} onClick={handelCancel}>Cancel</button>
+                  </div>
                </div>
             </div>
          }
