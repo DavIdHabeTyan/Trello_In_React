@@ -1,22 +1,31 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 
 import Edit from "./../../assets/edite.svg"
 
 import iconDelete from "./../../assets/delet.svg"
 
+import Context from "../../context";
+
 const TrelloTasks = (props) => {
+
    const {
       status,
       description,
       title,
+      id,
+      category,
+   } = props;
+
+   const value = useContext(Context)
+
+   const {
       changeDescription,
       handleChangeTitle,
       changeCategory,
       handleChangeStatus,
-      id,
-      category,
       handleDeleteTrello
-   } = props;
+   } = value
+
    const [isClickedEdit, setIsClickedEdit] = useState(true)
    const [editDescription, setEditeDescription] = useState(description)
    const [editTitle, setEditTitle] = useState(title)
@@ -63,10 +72,8 @@ const TrelloTasks = (props) => {
          </div>
          {isClickedEdit ?
             <div>
-
                <img onClick={handleEdit} src={Edit} className={"iconEdit"} alt=""/>
                <img src={iconDelete} onClick={() => handleDeleteTrello(id)} className={"iconEdit"} alt=""/>
-
             </div>
             :
             <div className={"editMod_box"}>
@@ -131,7 +138,6 @@ const TrelloTasks = (props) => {
                </div>
             </div>
          }
-
       </div>
 
    );

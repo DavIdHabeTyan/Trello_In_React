@@ -4,9 +4,11 @@ import {useEffect, useState} from "react";
 import {tasksList} from './data/index'
 import AddNewTrelloTask from "./components/addNewTrelloTask";
 
+import Context from "./context";
 
 function App() {
    const [data, setData] = useState([]);
+
    useEffect(() => {
       setData(tasksList)
    }, [])
@@ -58,63 +60,51 @@ function App() {
    }
 
    const handleDeleteTrello = (id) => {
-      setData(prev=> prev.filter(elem => elem.id !== id))
+      setData(prev => prev.filter(elem => elem.id !== id))
+   }
+
+   const functionApp = {
+      handleAddNewTrello,
+      changeDescription,
+      handleChangeTitle,
+      changeCategory,
+      handleChangeStatus,
+      handleDeleteTrello,
    }
 
    return (
-      <div className="App">
-         <div className={"App_header"}>
-            <h1>Trello Board</h1>
-         </div>
-         <div className={"App_trello"}>
-            <div className={"test"}>
-               <div className={"App_todo"}>
+      <Context.Provider value={functionApp}>
+         <div className="App">
+            <div className={"App_header"}>
+               <h1>Trello Board</h1>
+            </div>
+            <div className={"App_trello"}>
+               <div className={"test"}>
+                  <div className={"App_todo"}>
+                     <AddNewTrelloTask
+                        name={"todo"}
+                        dataFilter={data.filter(elem => elem.status === "todo")}
+                     />
+                  </div>
                   <AddNewTrelloTask
-                     handleAddNewTrello={handleAddNewTrello}
-                     handleChangeTitle={handleChangeTitle}
-                     changeDescription={changeDescription}
-                     changeCategory={changeCategory}
-                     handleChangeStatus={handleChangeStatus}
-                     handleDeleteTrello={handleDeleteTrello}
-                     name={"todo"}
-                     dataFilter={data.filter(elem => elem.status === "todo")}
+                     name={"done"}
+                     dataFilter={data.filter(elem => elem.status === "done")}
+                  />
+
+                  <AddNewTrelloTask
+                     name={"blocked"}
+                     dataFilter={data.filter(elem => elem.status === "blocked")}
+                  />
+
+                  <AddNewTrelloTask
+                     name={"inProgress"}
+                     dataFilter={data.filter(elem => elem.status === "inProgress")}
                   />
                </div>
-               <AddNewTrelloTask
-                  handleAddNewTrello={handleAddNewTrello}
-                  handleChangeTitle={handleChangeTitle}
-                  changeDescription={changeDescription}
-                  changeCategory={changeCategory}
-                  handleChangeStatus={handleChangeStatus}
-                  handleDeleteTrello={handleDeleteTrello}
-                  name={"done"}
-                  dataFilter={data.filter(elem => elem.status === "done")}
-               />
-
-               <AddNewTrelloTask
-                  handleAddNewTrello={handleAddNewTrello}
-                  handleChangeTitle={handleChangeTitle}
-                  changeDescription={changeDescription}
-                  changeCategory={changeCategory}
-                  handleChangeStatus={handleChangeStatus}
-                  handleDeleteTrello={handleDeleteTrello}
-                  name={"blocked"}
-                  dataFilter={data.filter(elem => elem.status === "blocked")}
-               />
-
-               <AddNewTrelloTask
-                  handleAddNewTrello={handleAddNewTrello}
-                  handleChangeTitle={handleChangeTitle}
-                  changeDescription={changeDescription}
-                  changeCategory={changeCategory}
-                  handleChangeStatus={handleChangeStatus}
-                  handleDeleteTrello={handleDeleteTrello}
-                  name={"inProgress"}
-                  dataFilter={data.filter(elem => elem.status === "inProgress")}
-               />
             </div>
          </div>
-      </div>
+      </Context.Provider>
    );
 }
+
 export default App;
